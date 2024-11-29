@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
 
   if (!q) {
     return res.status(400).json({
-      error: "Mau nanya apa lu njir"
+      error: "provide query"
     })
   }
 
@@ -37,7 +37,7 @@ module.exports = async (req, res) => {
     })
   } catch (error) {
     res.status(500).json({
-      error: "Ada masalah, coba lagi nanti"
+      error: "err, fedk up"
     })
   }
 }
