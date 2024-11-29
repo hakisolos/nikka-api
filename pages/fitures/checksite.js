@@ -1,6 +1,4 @@
 const axios = require("axios");
-
-// Allowed API keys
 const allowedApiKeys = require("../../declaration/arrayKey.jsx");
 
 module.exports = async (req, res) => {
@@ -58,7 +56,7 @@ module.exports = async (req, res) => {
     }
   } catch (error) {
     // Handle errors from the external API or network issues
-    console.error(error);
+    console.error("Error fetching data:", error.message);
     return res.status(500).json({
       error: "An error occurred while processing your request"
     });
