@@ -1,10 +1,13 @@
 const axios = require("axios");
-const allowedApiKeys = require("../../declaration/arrayKey.jsx");
+const allowedApiKeys = require("../../declaration/arrayKey.jsx"); // Make sure to adjust the path to your allowed API keys
+
+const cache = {};
 
 module.exports = async (req, res) => {
-  const url = req.query.url;
-  const apiKey = req.query.apiKey;
+  const url = req.query.url; // The website URL to scrape
+  const apiKey = req.query.apiKey; // The API key for authorization
 
+  // Input validation
   if (!url) {
     return res.status(400).json({ error: "Please provide a URL" });
   }
@@ -17,6 +20,12 @@ module.exports = async (req, res) => {
     return res.status(403).json({ error: "Invalid API key" });
   }
 
+  // Check if the result is cached
+  if (cache[url]) {
+    return res.status(200).json(cache[url]);
+  }
+
+  // Encode URL to ensure it's in a valid format for the target API
   const encodedUrl = encodeURIComponent(url);
   const apiUrl = `https://itzpire.com/tools/about-website?url=${encodedUrl}`;
 
@@ -24,6 +33,7 @@ module.exports = async (req, res) => {
     console.log(`Requesting URL: ${apiUrl}`);
     const response = await axios.get(apiUrl, { timeout: 10000 }); // 10 seconds timeout
 
+    // Check if the request was successful
     if (response.data.status === "success") {
       const data = response.data.data;
       const result = {
@@ -34,6 +44,10 @@ module.exports = async (req, res) => {
         summary: data.summary || "No summary available"
       };
 
+      // Cache the result
+      cache[url] = result;
+
+      // Send the extracted data back as JSON
       return res.status(200).json(result);
     } else {
       return res.status(500).json({ error: "Failed to scrape website data" });
