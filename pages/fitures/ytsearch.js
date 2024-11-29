@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
     const data = response.data // Extract the data from the response
 
     const info = {
-      creator: "H4KI XER",
+      creator: "H4KI XER", // Only include H4KI XER
       company: "Nikka Botz Inc",
       data: data // Assign the fetched data here
     }
