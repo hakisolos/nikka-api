@@ -65,9 +65,7 @@ app.get("/prof", isAuthenticated, (req, res) => {
 app.get("/blackbox", limit, async (req, res) => {
     require("../pages/fitures/blackbox.js")(req, res)
 })
-app.get("/upload", limit, async (req, res) => {
-    require("../pages/fitures/uploader/upload.js")(req, res)
-})
+
 
 app.get("/tiktokdl", limit, async (req, res) => {
     require("../pages/fitures/tiktok.js")(req, res)
