@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
   if (!urls) {
     return res.status(400).json({
-      error: "Url Tiktok Nya Mana?"
+      error: "provide url"
     })
   }
 
@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     })
   } else if (!allowedApiKeys.includes(apiKey)) {
     return res.status(403).json({
-      error: "apikey not found"
+      error: "apikey invalid or not found"
     })
   }
 
@@ -38,7 +38,7 @@ module.exports = async (req, res) => {
     })
   } catch (error) {
     res.status(500).json({
-      error: "Ada masalah, coba lagi nanti"
+      error: "err, fedk up"
     })
   }
 }
