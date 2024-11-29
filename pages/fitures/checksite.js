@@ -1,29 +1,34 @@
+/*
+   * by balzz
+   * dont delete my wm
+   * follow more instagram: @iqstore78
+*/
+
 const axios = require("axios");
 const allowedApiKeys = require("../../declaration/arrayKey.jsx"); // Adjust the path to your allowed API keys
 
 const cache = {};
 
-// This function will serve as your API endpoint
 module.exports = async (req, res) => {
-  // Set trust proxy for Express-like behavior
-  if (req.headers['x-forwarded-for']) {
-    req.ip = req.headers['x-forwarded-for'].split(',')[0]; // Get the first IP from the X-Forwarded-For header
-  }
-
+  
   const url = req.query.url; // The website URL to scrape
   const apiKey = req.query.apiKey; // The API key for authorization
 
   // Input validation
   if (!url) {
-    return res.status(400).json({ error: "Please provide a URL" });
+    return res.status(400).json({
+      error: "Please provide a URL"
+    });
   }
 
   if (!apiKey) {
-    return res.status(403).json({ error: "API key is missing" });
-  }
-
-  if (!allowedApiKeys.includes(apiKey)) {
-    return res.status(403).json({ error: "Invalid API key" });
+    return res.status(403).json({
+      error: "Input Parameter Apikey!"
+    });
+  } else if (!allowedApiKeys.includes(apiKey)) {
+    return res.status(403).json({
+      error: "apikey not found"
+    });
   }
 
   // Check if the result is cached
@@ -56,10 +61,14 @@ module.exports = async (req, res) => {
       // Send the extracted data back as JSON
       return res.status(200).json(result);
     } else {
-      return res.status(500).json({ error: "Failed to scrape website data" });
+      return res.status(500).json({
+        error: "Failed to scrape website data"
+      });
     }
   } catch (error) {
     console.error("Error fetching data:", error.message);
-    return res.status(500).json({ error: "An error occurred while processing your request" });
+    return res.status(500).json({
+      error: "An error occurred while processing your request"
+    });
   }
 };
