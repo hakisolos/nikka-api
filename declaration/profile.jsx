@@ -11,7 +11,7 @@ module.exports = (req, res) => {
     })
   } else {
     res.status(404).json({
-      error: "Lu Aja Belum Login Jir"
+      error: "you need to login first"
     })
   }
 }
