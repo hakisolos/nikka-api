@@ -23,15 +23,16 @@ module.exports = async (req, res) => {
   }
 
   const url = `https://api.agatz.xyz/api/ytsearch?message=${q}`
+  const info = {
+    creator: "H4KI XER",
+    company: "Nikka Botz Inc".
+    data: data.data
+  };
 
   try {
     const response = await axios.get(url)
     const data = response.data
-    res.status(200).json({
-      creator: "H4KI XER",
-      company: "Nikka botz inc",
-      data: data
-    })
+    res.status(200).json(info)
   } catch (error) {
     res.status(500).json({
       error: "err, fedk up"
