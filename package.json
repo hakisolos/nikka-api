@@ -1,5 +1,5 @@
 {
-  "name": "memek",
+  "name": "nikka-api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "balxzzy",
+  "author": "Haki",
   "license": "MIT",
   "description": "",
   "dependencies": {
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
+    "multer": "^1.4.4",
     "express": "^4.21.1",
     "express-rate-limit": "^7.4.1",
     "express-session": "^1.18.1"
