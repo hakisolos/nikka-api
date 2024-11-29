@@ -61,7 +61,7 @@ app.get("/prof", isAuthenticated, (req, res) => {
     require("../declaration/profile.jsx")(req, res)
 })
 
-app.get("/blekbok", limit, async (req, res) => {
+app.get("/blackbox", limit, async (req, res) => {
     require("../pages/fitures/blackbox.js")(req, res)
 })
 
