@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
 
   if (!message) {
     return res.status(400).json({
-      error: "provide url"
+      error: "provide query"
     })
   }
 
@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     })
   }
 
-  const url = `https://api.agatz.xyz/api/google?message=${message}`
+  const url = `https://api.agatz.xyz/api/ytsearch?message=${message}`
 
   try {
     const response = await axios.get(url)
