@@ -82,7 +82,7 @@ app.get("/andiff", limit, async (req, res) => {
     require("../pages/fitures/andiff.js")(req, res)
 })
 app.get("/yts", limit, async (req, res) => {
-    require("../pages/fitures/ytsearch.js")(req, res)
+    require("../pages/fitures/downloader/ytsearch.js")(req, res)
 })
 app.get("/instagramDL", limit, async (req, res) => {
     require("../pages/fitures/instagram.js")(req, res)
