@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     })
   }
 
-  const url = `https://api.agatz.xyz/api/ytsearch?message=${message}`
+  const url = `https://api.agatz.xyz/api/ytsearch?message=${q}`
 
   try {
     const response = await axios.get(url)
