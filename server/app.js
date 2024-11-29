@@ -81,6 +81,9 @@ app.get("/upscale", limit, async (req, res) => {
 app.get("/andiff", limit, async (req, res) => {
     require("../pages/fitures/andiff.js")(req, res)
 })
+app.get("/checksite", limit, async (req, res) => {
+    require("../pages/fitures/checksite.js")(req, res)
+})
 app.get("/instagramDL", limit, async (req, res) => {
     require("../pages/fitures/instagram.js")(req, res)
 })
