@@ -17,7 +17,7 @@ app.use(checkBanned)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({
-    secret: 'komtolllll',
+    secret: 'Haki',
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 3600000 } 
