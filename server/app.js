@@ -78,7 +78,9 @@ app.get("/fb", limit, async (req, res) => {
 app.get("/remini", limit, async (req, res) => {
     require("../pages/fitures/tools/remini.js")(req, res)
 })
-
+app.get("/andiff", limit, async (req, res) => {
+    require("../pages/fitures/andiff.js")(req, res)
+})
 app.get("/instagramDL", limit, async (req, res) => {
     require("../pages/fitures/instagram.js")(req, res)
 })
