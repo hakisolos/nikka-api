@@ -1,4 +1,4 @@
-const axios = require("axios");
+/*const axios = require("axios");
 const allowedApiKeys = require("../../declaration/arrayKey.jsx");
 
 module.exports = async (req, res) => {
@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
    * Pinterest Downloader
    * By [Your Name]
    * Don't remove the watermark
-*/
+
 
 const express = require('express');
 const { pinterest } = require('ironman-api');
@@ -44,6 +44,9 @@ module.exports = async (req, res) => {
       });
     }
 
+
+    
+
     // Return the fetched data
     res.status(200).json({
       status: "success",
@@ -62,3 +65,4 @@ if (require.main === module) {
   app.get('/pinterest', module.exports);
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
+*/
