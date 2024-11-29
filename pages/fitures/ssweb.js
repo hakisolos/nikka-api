@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
       details: error.message
 
 
-      */
+      *
 
 const axios = require("axios");
 const allowedApiKeys = require("../../declaration/arrayKey.jsx");
@@ -79,6 +79,58 @@ module.exports = async (req, res) => {
     });
   }
 };
+    });
+  }
+};
+*/
+
+const axios = require("axios");
+const allowedApiKeys = require("../../declaration/arrayKey.jsx");
+
+module.exports = async (req, res) => {
+  const url = req.query.url;
+  const apiKey = req.query.apiKey;
+
+  if (!url) {
+    return res.status(400).json({ error: "Provide a URL" });
+  }
+
+  if (!apiKey) {
+    return res.status(403).json({ error: "Input parameter 'apiKey'!" });
+  }
+
+  if (!allowedApiKeys.includes(apiKey)) {
+    return res.status(403).json({ error: "API key invalid or not found" });
+  }
+
+  const screenshotUrl = `https://ssweb-livid.vercel.app/ss?url=${encodeURIComponent(url)}`;
+
+  try {
+    const response = await axios({
+      method: "get",
+      url: screenshotUrl,
+      responseType: "stream",
+    });
+
+    // Set the appropriate headers for the response
+    res.setHeader("Content-Type", "image/png");
+
+    // Listen to the 'error' event to handle any stream issues
+    response.data.on("error", (streamError) => {
+      console.error("Stream error:", streamError.message);
+      res.status(500).json({
+        error: "Error streaming screenshot",
+        details: streamError.message,
+      });
+    });
+
+    // Pipe the stream directly to the response
+    response.data.pipe(res);
+  } catch (error) {
+    console.error("Stream Request Error:", error.message);
+    res.status(500).json({
+      error: "Error fetching or streaming the screenshot",
+      details: error.message,
     });
   }
 };
