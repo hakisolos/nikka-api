@@ -69,6 +69,10 @@ app.get("/tiktokdl", limit, async (req, res) => {
     require("../pages/fitures/tiktok.js")(req, res)
 })
 
+app.get("/pin", limit, async (req, res) => {
+    require("../pages/fitures/pinterest.js")(req, res)
+})
+
 app.get("/instagramDL", limit, async (req, res) => {
     require("../pages/fitures/instagram.js")(req, res)
 })
