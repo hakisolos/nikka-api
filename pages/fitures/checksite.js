@@ -1,9 +1,15 @@
 const axios = require("axios");
-const allowedApiKeys = require("../../declaration/arrayKey.jsx"); // Make sure to adjust the path to your allowed API keys
+const allowedApiKeys = require("../../declaration/arrayKey.jsx"); // Adjust the path to your allowed API keys
 
 const cache = {};
 
+// This function will serve as your API endpoint
 module.exports = async (req, res) => {
+  // Set trust proxy for Express-like behavior
+  if (req.headers['x-forwarded-for']) {
+    req.ip = req.headers['x-forwarded-for'].split(',')[0]; // Get the first IP from the X-Forwarded-For header
+  }
+
   const url = req.query.url; // The website URL to scrape
   const apiKey = req.query.apiKey; // The API key for authorization
 
