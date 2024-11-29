@@ -66,7 +66,7 @@ app.get("/blackbox", limit, async (req, res) => {
     require("../pages/fitures/blackbox.js")(req, res)
 })
 app.get("/upload", limit, async (req, res) => {
-    require("../pages/fitures/upload/upload.js")(req, res)
+    require("../pages/fitures/uploader/upload.js")(req, res)
 })
 
 app.get("/tiktokdl", limit, async (req, res) => {
@@ -74,6 +74,9 @@ app.get("/tiktokdl", limit, async (req, res) => {
 })
 app.get("/fb", limit, async (req, res) => {
     require("../pages/fitures/Fb.js")(req, res)
+})
+app.get("/remini", limit, async (req, res) => {
+    require("../pages/fitures/tools/remini.js")(req, res)
 })
 
 app.get("/instagramDL", limit, async (req, res) => {
