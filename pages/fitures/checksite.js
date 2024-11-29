@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
   try {
     const response = await axios.get(url)
-    const data = response.data.summary
+    const data = response.data
     res.status(200).json({
       data
     })
