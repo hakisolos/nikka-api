@@ -3,10 +3,10 @@ const allowedApiKeys = require("../../declaration/arrayKey.jsx")
 
 module.exports = async (req, res) => {
 
-  const message = req.query.message
+  const q = req.query.q
   const apiKey = req.query.apiKey
 
-  if (!message) {
+  if (!q) {
     return res.status(400).json({
       error: "provide query"
     })
