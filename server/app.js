@@ -75,8 +75,8 @@ app.get("/tiktokdl", limit, async (req, res) => {
 app.get("/fb", limit, async (req, res) => {
     require("../pages/fitures/Fb.js")(req, res)
 })
-app.get("/remini", limit, async (req, res) => {
-    require("../pages/fitures/tools/remini.js")(req, res)
+app.get("/upscale", limit, async (req, res) => {
+    require("../pages/fitures/upscaler.js")(req, res)
 })
 app.get("/andiff", limit, async (req, res) => {
     require("../pages/fitures/andiff.js")(req, res)
