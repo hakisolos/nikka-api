@@ -1,4 +1,4 @@
-const axios = require("axios");
+/*const axios = require("axios");
 const allowedApiKeys = require("../../declaration/arrayKey.jsx");
 const multer = require("multer");
 
@@ -32,6 +32,7 @@ module.exports = async (req, res) => {
         error: "No file uploaded. Please provide a file."
       });
     }
+    
 
     // Create a FormData object to send the file to itzpire.com
     const formData = new FormData();
@@ -46,7 +47,7 @@ module.exports = async (req, res) => {
       });
 
       // Return the response from itzpire.com
-      res.status(200).json({
+      res.status(200).json(
         success: true,
         message: "File uploaded successfully.",
         data: response.data,
@@ -59,3 +60,4 @@ module.exports = async (req, res) => {
     }
   });
 };
+*/
