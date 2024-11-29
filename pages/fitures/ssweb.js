@@ -20,9 +20,14 @@ module.exports = async (req, res) => {
   const screenshotUrl = `https://ssweb-livid.vercel.app/ss?url=${encodeURIComponent(url)}`;
 
   try {
-    const response = await axios.get(screenshotUrl, { responseType: "arraybuffer" });
+    console.log("Fetching screenshot from:", screenshotUrl);
+    console.time("ImageFetch");
+
+    const response = await axios.get(screenshotUrl, { responseType: "arraybuffer", timeout: 10000 });
+
+    console.timeEnd("ImageFetch");
+
     const base64Image = Buffer.from(response.data, "binary").toString("base64");
-    
     res.status(200).json({
       message: "Screenshot captured successfully",
       image: `data:image/png;base64,${base64Image}`
