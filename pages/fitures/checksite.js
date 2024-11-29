@@ -28,7 +28,8 @@ module.exports = async (req, res) => {
     const response = await axios.get(url)
     const data = response.data
     res.status(200).json({
-      data
+      creator: "H4KI XER",
+      data: data
     })
   } catch (error) {
     res.status(500).json({
