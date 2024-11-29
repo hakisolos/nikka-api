@@ -29,6 +29,7 @@ module.exports = async (req, res) => {
     const data = response.data
     res.status(200).json({
       creator: "H4KI XER",
+      company: "Nikka botz inc",
       data: data
     })
   } catch (error) {
