@@ -77,8 +77,7 @@ module.exports = async (req, res) => {
    * by balzz
    * dont delate my wm
    * follow more instagram: @iqstore78
-*/
-const axios = require("axios")
+*const axios = require("axios")
 const allowedApiKeys = require("../../declaration/arrayKey.jsx")
 
 module.exports = async (req, res) => {
@@ -116,3 +115,4 @@ module.exports = async (req, res) => {
     })
   }
 }
+*/
