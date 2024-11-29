@@ -83,7 +83,7 @@ const allowedApiKeys = require("../../declaration/arrayKey.jsx")
 
 module.exports = async (req, res) => {
 
-  const q = req.query.url
+  const url = req.query.url
   const apiKey = req.query.apiKey
 
   if (!q) {
@@ -102,11 +102,11 @@ module.exports = async (req, res) => {
     })
   }
 
-  const url = `https://itzpire.com/tools/about-website?url=${q}`
+  const url = `https://itzpire.com/tools/about-website?url=${url}`
 
   try {
     const response = await axios.get(url)
-    const data = response.data.result
+    const data = response.data.summary
     res.status(200).json({
       data
     })
