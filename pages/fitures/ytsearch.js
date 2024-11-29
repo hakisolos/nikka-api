@@ -21,12 +21,12 @@ module.exports = async (req, res) => {
       error: "apikey not found"
     })
   }
-
+  const data = response.data;
   const url = `https://api.agatz.xyz/api/ytsearch?message=${q}`
   const info = {
     creator: "H4KI XER",
     company: "Nikka Botz Inc",
-    data: data.data
+    data: data
   };
 
   try {
