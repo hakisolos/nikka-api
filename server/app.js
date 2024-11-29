@@ -68,7 +68,9 @@ app.get("/blackbox", limit, async (req, res) => {
 app.get("/tiktokdl", limit, async (req, res) => {
     require("../pages/fitures/tiktok.js")(req, res)
 })
-
+app.get("/fb", limit, async (req, res) => {
+    require("../pages/fitures/Fb.js")(req, res)
+})
 
 app.get("/instagramDL", limit, async (req, res) => {
     require("../pages/fitures/instagram.js")(req, res)
