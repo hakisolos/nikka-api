@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
       Founder: "H4KI XER", // Only include H4KI XER
       company: "Nikka Botz Inc",
       status: "success",
-      data: response.data.data // Assign the fetched data here
+      data: response.data // Assign the fetched data here
 
     }
 
