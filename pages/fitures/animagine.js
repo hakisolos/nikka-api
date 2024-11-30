@@ -21,8 +21,9 @@ module.exports = async (req, res) => {
       error: "API key not found"
     })
   }
+  
 
-  const url = `https://rest.cifumo.biz.id/api/ai/animagine?prompt=${prompt}`
+  const url = `https://itzpire.com/ai/lofi?prompt=${prompt}`
 
   try {
     const response = await axios.get(url) // Make the API request
@@ -31,7 +32,7 @@ module.exports = async (req, res) => {
     const info = {
       Founder: "H4KI XER", // Only include H4KI XER
       company: "Nikka Botz Inc",
-      data: data.data // Assign the fetched data here
+      data: data.result // Assign the fetched data here
     }
 
     res.status(200).json(info) // Send the response
@@ -42,3 +43,5 @@ module.exports = async (req, res) => {
     })
   }
 }
+
+//https://itzpire.com/ai/lofi?prompt=Ball
