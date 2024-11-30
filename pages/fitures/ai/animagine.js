@@ -3,10 +3,10 @@ const axios = require("axios")
 const allowedApiKeys = require("../../declaration/arrayKey.jsx")
 
 module.exports = async (req, res) => {
-  const q = req.query.q
+  const prompt = req.query.prompt
   const apiKey = req.query.apiKey
 
-  if (!q) {
+  if (!prompt) {
     return res.status(400).json({
       error: "Provide query"
     })
@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     })
   }
 
-  const url = `https://api.agatz.xyz/api/ytsearch?message=${q}`
+  const url = `https://rest.cifumo.biz.id/api/ai/animagine?prompt=${prompt}`
 
   try {
     const response = await axios.get(url) // Make the API request
