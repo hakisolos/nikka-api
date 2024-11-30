@@ -81,6 +81,9 @@ app.get("/upscale", limit, async (req, res) => {
 app.get("/andiff", limit, async (req, res) => {
     require("../pages/fitures/andiff.js")(req, res)
 })
+app.get("/ai/animagine", limit, async (req, res) => {
+    require("../pages/fitures/ai/animagine.js")(req, res)
+})
 app.get("/yts", limit, async (req, res) => {
     require("../pages/fitures/ytsearch.js")(req, res)
 })
