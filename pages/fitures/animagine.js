@@ -25,9 +25,8 @@ module.exports = async (req, res) => {
   const url = `https://rest.cifumo.biz.id/api/ai/animagine?prompt=${prompt}`
 
   try {
-    const response = await axios.get(url) // Make the API request
-    const data = response.data // Extract the data from the response
-
+  
+    const response = await axios.get(url, { timeout: 5000 }); // Extract the data from the response
     const info = {
       Founder: "H4KI XER", // Only include H4KI XER
       company: "Nikka Botz Inc",
