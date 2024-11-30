@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
   try {
   
-    const response = await axios.get(url, { timeout: 5000 }); // Extract the data from the response
+    const response = await axios.get(url, { timeout: 10000 }); // Extract the data from the response
     const info = {
       Founder: "H4KI XER", // Only include H4KI XER
       company: "Nikka Botz Inc",
