@@ -90,6 +90,9 @@ app.get("/yts", limit, async (req, res) => {
 app.get("/lyrics", limit, async (req, res) => {
     require("../pages/fitures/lyrics.js")(req, res)
 })
+app.get("/spotify", limit, async (req, res) => {
+    require("../pages/fitures/spotify.js")(req, res)
+})
 app.get("/google", limit, async (req, res) => {
     require("../pages/fitures/google.js")(req, res)
 })
