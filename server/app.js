@@ -87,6 +87,9 @@ app.get("/imagine", limit, async (req, res) => {
 app.get("/yts", limit, async (req, res) => {
     require("../pages/fitures/ytsearch.js")(req, res)
 })
+app.get("/lyrics", limit, async (req, res) => {
+    require("../pages/fitures/lyrics.js")(req, res)
+})
 app.get("/google", limit, async (req, res) => {
     require("../pages/fitures/google.js")(req, res)
 })
