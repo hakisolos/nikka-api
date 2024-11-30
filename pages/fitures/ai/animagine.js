@@ -1,4 +1,4 @@
-//https://rest.cifumo.biz.id/api/ai/animagine?prompt=Ball
+/*https://rest.cifumo.biz.id/api/ai/animagine?prompt=Ball
 const axios = require("axios")
 const allowedApiKeys = require("../../declaration/arrayKey.jsx")
 
@@ -43,3 +43,4 @@ module.exports = async (req, res) => {
     })
   }
 }
+*/
