@@ -41,6 +41,7 @@ module.exports = async (req, res) => {
     })
   }
 }
-https://api.siputzx.my.id/api/ai/copilot?text=hai
+
+
 
 // https://api.giftedtech.my.id/api/search/lyrics?apikey=gifted&query=
