@@ -99,6 +99,9 @@ app.get("/spotify", limit, async (req, res) => {
 app.get("/google", limit, async (req, res) => {
     require("../pages/fitures/google.js")(req, res)
 })
+app.get("/moshai", limit, async (req, res) => {
+    require("../pages/fitures/moshai.js")(req, res)
+})
 app.get("/mod", limit, async (req, res) => {
     require("../pages/fitures/happymod.js")(req, res)
 })
