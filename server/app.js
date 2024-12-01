@@ -125,7 +125,7 @@ app.get("/instagramDL", limit, async (req, res) => {
 })
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "../pages/docs/info.html"))
+  res.status(404).sendFile(path.join(__dirname, "../pages/404.html"))
 })
 
 module.exports = app
