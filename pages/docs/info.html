@@ -275,7 +275,283 @@
       category.items.forEach(apiItem => {
         const apiItemDiv = document.createElement('div');
         apiItemDiv.classList.add('api-item');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Welcome to Nikka APIs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
 
+    body {
+      background: url('https://files.catbox.moe/mnp025.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+    }
+
+    .loader-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.5s forwards;
+    }
+
+    .loading-text {
+      font-size: 2.5rem;
+      color: #f0f0f0;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite alternate;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 30px;
+      background-color: #444;
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .progress {
+      width: 1%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff5e62, #ff9966);
+      border-radius: 15px;
+      animation: progressBar 3s ease-in-out forwards;
+    }
+
+    /* Keyframe animations */
+    @keyframes progressBar {
+      100% {
+        width: 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .welcome-content {
+      display: none;
+      text-align: center;
+      color: #fff;
+      font-family: 'Karla', sans-serif;
+      animation: fadeIn 2s ease-out forwards;
+      background-color: rgba(0, 0, 0, 0.7); /* Darker background with transparency */
+      padding: 50px 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      width: 85%;
+      max-width: 1200px; /* Wider content container */
+      margin: 0 auto;
+    }
+
+    .welcome-content h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: #ff5e62;
+      animation: slideIn 1.5s ease-out forwards;
+    }
+
+    .welcome-content p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeInText 2s ease-out 0.5s forwards;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      opacity: 0;
+      animation: fadeInText 2s ease-out 1s forwards;
+    }
+
+    .button-container a {
+      background-color: #ff5e62;
+      color: #fff;
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    /* Advanced Hover Effects for Buttons */
+    .button-container a::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background-color: #fff;
+      transition: all 0.4s ease;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    .button-container a:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .button-container a:hover {
+      background-color: #ff9966;
+      color: #222;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border: 2px solid #ff9966;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .welcome-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .button-container a {
+        padding: 12px 25px;
+        font-size: 1.2rem;
+      }
+
+      .loading-text {
+        font-size: 2rem;
+      }
+
+      .progress-bar {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .welcome-content h1 {
+        font-size: 2rem;
+      }
+
+      .button-container a {
+        padding: 10px 20px;
+        font-size: 1.1rem;
+      }
+
+      .progress-bar {
+        width: 100%;
+      }
+
+      .loading-text {
+        font-size: 1.8rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loader-container">
+    <div class="loading-text">Loading...</div>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+
+  <!-- Welcome Content -->
+  <div class="welcome-content" id="welcomeContent">
+    <h1>Welcome to Nikka APIs</h1>
+    <p> free APIs by Haki Xer.</p>
+    <div class="button-container">
+      <a href="#" id="documentationLink">Docs</a>
+      <a href="#" id="contactLink">Contact</a>
+    </div>
+  </div>
+
+  <script>
+    // Simulating a loading progress
+    let progress = document.querySelector('.progress');
+    let loadingText = document.querySelector('.loading-text');
+    let welcomeContent = document.getElementById('welcomeContent');
+    
+    let width = 1;
+    let interval = setInterval(function() {
+      if (width >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          // Remove the loader
+          document.querySelector('.loader-container').style.display = 'none';
+          // Show the welcome content
+          welcomeContent.style.display = 'block';
+        }, 500); // Delay to let progress bar finish
+      } else {
+        width++;
+        progress.style.width = width + '%';
+      }
+    }, 30); // Interval speed for progress bar
+
+    // Add your links here
+    document.getElementById('documentationLink').href = 'index.html'; // Replace with your documentation link
+    document.getElementById('contactLink').href = 'https://wa.me/2349112171078?text=Hii'; // Replace with your contact link
+  </script>
+
+</body>
+</html>
         const apiName = document.createElement('div');
         apiName.classList.add('api-name');
         apiName.innerText = apiItem.name;
