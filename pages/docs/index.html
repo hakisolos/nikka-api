@@ -15,54 +15,63 @@
     }
 
     body {
-      background-color: #0d1117;
-      color: #ffffff;
+      background-color: #1A1A2E;
+      color: #F0F0F0;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
       min-height: 100vh;
+      background-image: url('https://files.catbox.moe/mnp025.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     header {
       text-align: center;
       margin-bottom: 30px;
+      background-color: rgba(40, 44, 52, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     }
 
     header h1 {
-      font-size: 2.8rem;
-      color: #FFD700;
-      text-shadow: 0 0 3px #FFD700, 0 0 7px #FFD700;
+      font-size: 3rem;
+      color: #FF69B4;
+      text-shadow: 0 0 5px #FF69B4, 0 0 15px #FF69B4;
       margin-bottom: 10px;
     }
 
     header p {
-      font-size: 1.1rem;
-      color: #f4f4f4;
+      font-size: 1.2rem;
+      color: #D3D3D3;
     }
 
     .api-list {
       width: 100%;
-      max-width: 800px;
-      background: #161b22;
+      max-width: 900px;
+      background: rgba(26, 26, 46, 0.8);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
-      animation: fadeIn 1.2s ease-in-out;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
       margin-top: 30px;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     .category-header {
-      font-size: 1.8rem;
-      color: #1E90FF;
-      text-shadow: 0 0 3px #1E90FF, 0 0 7px #1E90FF;
-      margin-bottom: 15px;
+      font-size: 2rem; /* Bigger, visible headers */
+      color: #FFD700; /* Gold color for contrast */
+      margin: 20px 0 10px;
+      text-transform: uppercase;
+      text-align: center;
     }
 
     .api-item {
       margin-bottom: 20px;
       padding: 15px;
-      background: #1f2735;
+      background: #2A2A4D;
       border-radius: 8px;
       transition: transform 0.3s ease, background 0.3s ease;
       position: relative;
@@ -70,8 +79,8 @@
     }
 
     .api-item:hover {
-      transform: scale(1.03);
-      background: #222e3f;
+      transform: scale(1.05);
+      background: #3E3E72;
     }
 
     .api-item:before {
@@ -81,7 +90,7 @@
       left: 0;
       width: 0;
       height: 100%;
-      background: rgba(30, 144, 255, 0.1);
+      background: rgba(255, 105, 180, 0.2);
       transition: width 0.4s ease;
       z-index: 1;
     }
@@ -92,17 +101,17 @@
 
     .api-name {
       font-size: 1.3rem;
-      color: #1E90FF;
+      color: #FF69B4;
       position: relative;
       z-index: 2;
     }
 
     button {
-      background-color: #1E90FF;
+      background-color: #00BFFF;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      font-size: 14px;
+      padding: 8px 16px; /* Smaller button size */
+      font-size: 12px; /* Smaller font */
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
@@ -111,7 +120,7 @@
     }
 
     button:hover {
-      background-color: #1C86EE;
+      background-color: #1E90FF;
     }
 
     a {
@@ -148,8 +157,6 @@
           { name: "Bing ai", link: "https://nikka-api.us.kg/bing?q=hi&apiKey=nikka" },
           { name: "mosh ai", link: "https://nikka-api.us.kg/moshai?q=hello&apiKey=nikka" },
           { name: "Teach Me", link: "https://nikka-api.us.kg/teachme?q=hello&apiKey=nikka" }
-   
-          
         ]
       },
       {
@@ -164,7 +171,6 @@
           { name: "Duck duck go", link: "https://nikka-api.us.kg/duckduckgo?q=openai&apiKey=nikka" },
         ]
       }
-      // Other categories go here...
     ];
 
     const apiListContainer = document.getElementById('apiList');
@@ -192,7 +198,7 @@
         apiLink.target = "_blank";
 
         const testButton = document.createElement('button');
-        testButton.innerText = "Test API";
+        testButton.innerText = "Test"; /* Button text simplified */
         apiLink.appendChild(testButton);
 
         apiItemDiv.appendChild(apiLink);
