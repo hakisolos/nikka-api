@@ -1,4 +1,4 @@
-const apiData = [
+/*const apiData = [
   {
     category: "Ai APIs",
     items: [
@@ -138,3 +138,4 @@ apiData.forEach(category => {
 
   apiListContainer.appendChild(categorySection);
 });
+*/
