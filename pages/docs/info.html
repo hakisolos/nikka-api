@@ -4,283 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>API Documentation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #2e3b4e, #1a1a2e);
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 50px;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 60px;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Floating card shadow */
-      background: linear-gradient(135deg, #ff5e62, #ff9966);
-      background-size: 300% 300%;
-      animation: gradientShift 2s ease infinite, fadeIn 1s ease-out;
-      position: relative;
-      z-index: 10;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    header:hover {
-      background: linear-gradient(135deg, #ff9966, #ff5e62);
-      background-size: 300% 300%;
-      animation: gradientShift 2s ease infinite, glowPulse 1.5s ease-in-out infinite;
-      box-shadow: 0 25px 40px rgba(255, 94, 98, 0.6); /* Glow effect on hover */
-      transform: translateY(-5px); /* Subtle card lift effect */
-    }
-
-    header h1 {
-      font-size: 3.5rem;
-      color: #ffffff;
-      margin-bottom: 10px;
-      font-family: 'Karla', sans-serif;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px #ff5e62, 0 0 20px #ff5e62, 0 0 30px #ff5e62;
-      animation: fadeIn 1s ease-out 0.5s;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #f1f1f1;
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin-top: 10px;
-      animation: fadeIn 1s ease-out 1s;
-      opacity: 0.8;
-    }
-
-    /* Animation to shift the gradient for dynamic effect */
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Fade-in effect */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Neon glow pulse on hover */
-    @keyframes glowPulse {
-      0% {
-        text-shadow: 0 0 10px #ff5e62, 0 0 20px #ff5e62, 0 0 30px #ff5e62;
-      }
-      50% {
-        text-shadow: 0 0 20px #ff9966, 0 0 30px #ff9966, 0 0 40px #ff9966;
-      }
-      100% {
-        text-shadow: 0 0 10px #ff5e62, 0 0 20px #ff5e62, 0 0 30px #ff5e62;
-      }
-    }
-
-    .api-list {
-      width: 100%;
-      max-width: 1100px;
-      background: #212121;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-      margin-top: 50px;
-      animation: fadeIn 1.5s ease-out 1.5s;
-    }
-
-    .category-header {
-      font-size: 2.2rem;
-      color: #ffcc00;
-      margin-bottom: 30px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: capitalize;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    .api-item {
-      margin-bottom: 30px;
-      padding: 25px;
-      background: rgba(44, 62, 80, 0.8); /* Semi-transparent */
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      transition: background 0.3s ease, transform 0.3s ease;
-      transform-origin: center center;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    .api-item:nth-child(even) {
-      animation-delay: 0.5s;
-    }
-
-    .api-item:nth-child(odd) {
-      animation-delay: 1s;
-    }
-
-    .api-item:hover {
-      background: rgba(52, 152, 219, 0.9); /* Transparent neon blue */
-      transform: scale(1.05);
-      box-shadow: 0 8px 40px rgba(52, 152, 219, 0.6);
-    }
-
-    .api-item:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: rgba(0, 204, 255, 0.4); /* Semi-transparent blue glow */
-      transition: width 0.5s ease;
-      z-index: 1;
-    }
-
-    .api-item:hover:before {
-      width: 100%;
-    }
-
-    .api-name {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #00c8ff;
-      position: relative;
-      z-index: 2;
-      margin-bottom: 10px;
-      opacity: 0;
-      animation: fadeIn 1s ease-out 2s forwards;
-    }
-
-    .api-description {
-      font-size: 1.1rem;
-      color: #ddd;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease-out 2.5s forwards;
-    }
-
-    button {
-      background-color: rgba(255, 94, 98, 0.8); /* Transparent neon red */
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      z-index: 2;
-      backdrop-filter: blur(5px); /* Blur effect for the button */
-      opacity: 0;
-      animation: fadeIn 1s ease-out 3s forwards;
-    }
-
-    button:hover {
-      background-color: rgba(255, 153, 102, 0.9);
-      transform: scale(1.1);
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-
-      header p {
-        font-size: 1rem;
-      }
-
-      .api-item {
-        padding: 15px;
-      }
-
-      .category-header {
-        font-size: 1.8rem;
-      }
-
-      button {
-        padding: 10px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Nikka API</h1>
-    <p>Explore powerful and free APIs by Haki Xer</p>
-  </header>
-
-  <div class="api-list" id="apiList"></div>
-
-  <script>
-    const apiData = [
-      {
-        category: "Ai APIs",
-        items: [
-          { name: "Imagine", link: "https://nikka-api.vercel.app/imagine?prompt=ball&apiKey=nikka" },
-          { name: "Blackbox", link: "https://nikka-api.us.kg/blackbox?q=hi&apiKey=nikka" },
-          { name: "Bing ai", link: "https://nikka-api.us.kg/bing?q=hi&apiKey=nikka" }
-        ]
-      },
-      {
-        category: "Search APIs",
-        items: [
-          { name: "Google", link: "https://nikka-api.vercel.app/google?q=haki&apiKey=nikka" },
-          { name: "Lyrics", link: "https://nikka-api.vercel.app/lyrics?q=haki&apiKey=nikka" }
-        ]
-      }
-    ];
-
-    const apiListContainer = document.getElementById('apiList');
-
-    apiData.forEach(category => {
-      const categorySection = document.createElement('div');
-      categorySection.classList.add('category-section');
-
-      const categoryHeader = document.createElement('div');
-      categoryHeader.classList.add('category-header');
-      categoryHeader.innerText = category.category;
-      categorySection.appendChild(categoryHeader);
-
-      category.items.forEach(apiItem => {
-        const apiItemDiv = document.createElement('div');
-        apiItemDiv.classList.add('api-item');
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Welcome to Nikka APIs</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -341,7 +64,6 @@
       animation: progressBar 3s ease-in-out forwards;
     }
 
-    /* Keyframe animations */
     @keyframes progressBar {
       100% {
         width: 100%;
@@ -372,12 +94,12 @@
       color: #fff;
       font-family: 'Karla', sans-serif;
       animation: fadeIn 2s ease-out forwards;
-      background-color: rgba(0, 0, 0, 0.7); /* Darker background with transparency */
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 50px 30px;
       border-radius: 10px;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
       width: 85%;
-      max-width: 1200px; /* Wider content container */
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -417,7 +139,6 @@
       border: 2px solid transparent;
     }
 
-    /* Advanced Hover Effects for Buttons */
     .button-container a::before {
       content: '';
       position: absolute;
@@ -462,7 +183,6 @@
       }
     }
 
-    /* Responsive Styling */
     @media (max-width: 768px) {
       .welcome-content h1 {
         font-size: 2.5rem;
@@ -500,11 +220,9 @@
         font-size: 1.8rem;
       }
     }
-
   </style>
 </head>
 <body>
-
   <!-- Loading Screen -->
   <div class="loader-container">
     <div class="loading-text">Loading...</div>
@@ -516,66 +234,19 @@
   <!-- Welcome Content -->
   <div class="welcome-content" id="welcomeContent">
     <h1>Welcome to Nikka APIs</h1>
-    <p> free APIs by Haki Xer.</p>
+    <p>Free apis by Haki xer.</p>
     <div class="button-container">
-      <a href="#" id="documentationLink">Docs</a>
-      <a href="#" id="contactLink">Contact</a>
+      <a href="index.html">Docs</a>
+      <a href="https://wa.me/2349112171078?text=hi">Contact me</a>
     </div>
   </div>
 
   <script>
-    // Simulating a loading progress
-    let progress = document.querySelector('.progress');
-    let loadingText = document.querySelector('.loading-text');
-    let welcomeContent = document.getElementById('welcomeContent');
-    
-    let width = 1;
-    let interval = setInterval(function() {
-      if (width >= 100) {
-        clearInterval(interval);
-        setTimeout(() => {
-          // Remove the loader
-          document.querySelector('.loader-container').style.display = 'none';
-          // Show the welcome content
-          welcomeContent.style.display = 'block';
-        }, 500); // Delay to let progress bar finish
-      } else {
-        width++;
-        progress.style.width = width + '%';
-      }
-    }, 30); // Interval speed for progress bar
-
-    // Add your links here
-    document.getElementById('documentationLink').href = 'index.html'; // Replace with your documentation link
-    document.getElementById('contactLink').href = 'https://wa.me/2349112171078?text=Hii'; // Replace with your contact link
-  </script>
-
-</body>
-</html>
-        const apiName = document.createElement('div');
-        apiName.classList.add('api-name');
-        apiName.innerText = apiItem.name;
-        apiItemDiv.appendChild(apiName);
-
-        const apiDescription = document.createElement('div');
-        apiDescription.classList.add('api-description');
-        apiDescription.innerText = "Click to explore the API";
-        apiItemDiv.appendChild(apiDescription);
-
-        const apiLink = document.createElement('a');
-        apiLink.href = apiItem.link;
-        apiLink.target = "_blank";
-
-        const testButton = document.createElement('button');
-        testButton.innerText = "Explore API";
-        apiLink.appendChild(testButton);
-
-        apiItemDiv.appendChild(apiLink);
-        categorySection.appendChild(apiItemDiv);
-      });
-
-      apiListContainer.appendChild(categorySection);
-    });
+    // Show welcome content after loading animation
+    setTimeout(() => {
+      document.querySelector('.loader-container').style.display = 'none';
+      document.querySelector('.welcome-content').style.display = 'block';
+    }, 3000);
   </script>
 </body>
 </html>
