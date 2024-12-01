@@ -35,6 +35,9 @@ app.use(session({
 app.get("/", limit, (req, res) => {
     res.sendFile(path.join(__dirname, "../pages/docs/info.html"))
 })
+app.get("/docs", limit, (req, res) => {
+    res.sendFile(path.join(__dirname, "../pages/docs/docs.html"))
+})
 
 app.get("/login", limit, (req, res) => {
     res.sendFile(path.join(__dirname, "../pages/login.html"))
