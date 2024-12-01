@@ -33,7 +33,7 @@ app.use(session({
 
 /* !=== PAGE ===! */
 app.get("/", limit, (req, res) => {
-    res.sendFile(path.join(__dirname, "../pages/docs/index.html"))
+    res.sendFile(path.join(__dirname, "../pages/docs/info.html"))
 })
 
 app.get("/login", limit, (req, res) => {
@@ -122,7 +122,7 @@ app.get("/instagramDL", limit, async (req, res) => {
 })
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "../pages/docs/index.html"))
+  res.status(404).sendFile(path.join(__dirname, "../pages/docs/info.html"))
 })
 
 module.exports = app
