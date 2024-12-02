@@ -2,10 +2,10 @@ const axios = require("axios")
 const allowedApiKeys = require("../../declaration/arrayKey.jsx")
 
 module.exports = async (req, res) => {
-  const q = req.query.q
+  const url = req.query.url
   const apiKey = req.query.apiKey
 
-  if (!q) {
+  if (!url) {
     return res.status(400).json({
       error: "Provide query"
     })
@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
     })
   }
 
-  const url = `https://api.siputzx.my.id/api/github/dependents?url=${q}`
+  const url = `https://api.siputzx.my.id/api/github/dependents?url=${url}`
  
   try {
     const response = await axios.get(url) // Make the API request
@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
     const info = {
       Founder: "H4KI XER", // Only include H4KI XER
       company: "Nikka Botz Inc",
-      data: data // Assign the fetched data here
+      data: data.data // Assign the fetched data here
     }
  
     res.status(200).json(info) // Send the response
