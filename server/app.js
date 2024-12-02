@@ -99,6 +99,9 @@ app.get("/teachme", limit, async (req, res) => {
 app.get("/gsmarena", limit, async (req, res) => {
     require("../pages/fitures/gsmarena.js")(req, res)
 })
+app.get("/dependent", limit, async (req, res) => {
+    require("../pages/fitures/dependent.js")(req, res)
+})
 app.get("/yts", limit, async (req, res) => {
     require("../pages/fitures/ytsearch.js")(req, res)
 })
